@@ -1,4 +1,4 @@
 2048
 ====
 
-2048 - Java, Androin &amp;&amp; Desktop
+2048 - Java, Android &amp;&amp; Desktop
