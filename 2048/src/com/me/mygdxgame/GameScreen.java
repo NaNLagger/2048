@@ -18,18 +18,20 @@ public class GameScreen implements Screen {
 	private ButtonActor[][] fields = new ButtonActor[4][4];
 	private GameInputListner gameInputListner;
 	
+	public static int sizeField = 578; 
+	
 
 	public GameScreen(SpriteBatch batch) {
 		mainStage = new Stage(MyStart.GAME_WIDTH, MyStart.GAME_HEIGHT, false, batch);
 		gameInputListner = new GameInputListner(this);
 		
 		background = new TextureActor(new Texture("data/background.png"));
-		background.setSize(512, 512);
+		background.setSize(sizeField, sizeField);
 		background.setOrigin(background.getWidth()/2, background.getHeight()/2);
 		background.setPosition(MyStart.GAME_WIDTH/2 - background.getOriginX(), MyStart.GAME_HEIGHT/2 - background.getOriginY());
 		
 		mainGroup = new Group();
-		mainGroup.setSize(512, 512);
+		mainGroup.setSize(sizeField, sizeField);
 		mainGroup.setOrigin(mainGroup.getWidth()/2, mainGroup.getHeight()/2);
 		mainGroup.setPosition(MyStart.GAME_WIDTH/2 - mainGroup.getOriginX(), MyStart.GAME_HEIGHT/2 - mainGroup.getOriginY());
 		mainGroup.addListener(gameInputListner);
@@ -223,9 +225,17 @@ public class GameScreen implements Screen {
 		Array<ButtonActor> array = new Array<ButtonActor>();
 		for(int i=0;i<4;i++)
 			for(int j=0;j<4;j++) {
-				if(fields[i][j].getValue() == 0)
+				if(fields[i][j].getValue() == 0) {
 					array.add(fields[i][j]);
+					fields[i][j].setVisible(false);
+				}
+				else {
+					fields[i][j].setVisible(true);
+				}
 			}
-		array.get(MathUtils.random(array.size-1)).setValue(2);
+		int temp = MathUtils.random(array.size-1);
+		array.get(temp).setValue(2);
+		array.get(temp).setVisible(true);
+	
 	}
 }

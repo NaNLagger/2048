@@ -18,9 +18,10 @@ public class ButtonActor extends TextureActor {
 		setName(value + "");
 		font = new BitmapFont();
         font.setColor(Color.RED);
-        setSize(108, 108);
+        int otstup = GameScreen.sizeField/32;
+        setSize((GameScreen.sizeField-otstup*5)/4, (GameScreen.sizeField-otstup*5)/4);
         setOrigin(getWidth()/2, getHeight()/2);
-        setPosition(getWidth()*position.y + 16*(1+position.y), getHeight()*position.x + 16*(1+position.x));
+        setPosition(getWidth()*position.y + otstup*(1+position.y), getHeight()*position.x + otstup*(1+position.x));
 	}
 	
 	@Override
@@ -46,5 +47,7 @@ public class ButtonActor extends TextureActor {
 	
 	public void setValue(int value) {
 		this.value = value;
+		float p = (float)(Math.log(value)/Math.log(2));
+		setColor(1-p/11, p/11, 0, 1);
 	}
 }
