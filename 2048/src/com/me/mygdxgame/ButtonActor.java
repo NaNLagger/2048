@@ -1,23 +1,24 @@
 package com.me.mygdxgame;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.HAlignment;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 
 public class ButtonActor extends TextureActor {
 	private int value;
-	private Vector2 position;	
-	private BitmapFont font;
+	private Vector2 position;
 
 	public ButtonActor(Texture toDraw, Vector2 position) {
 		super(toDraw);
 		this.value = 0;
 		this.position = position;
 		setName(value + "");
-		font = new BitmapFont();
-        font.setColor(Color.RED);
         int otstup = GameScreen.sizeField/32;
         setSize((GameScreen.sizeField-otstup*5)/4, (GameScreen.sizeField-otstup*5)/4);
         setOrigin(getWidth()/2, getHeight()/2);
@@ -27,7 +28,10 @@ public class ButtonActor extends TextureActor {
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
-		font.draw(batch, value+"", getX()+getOriginX(), getY()+getOriginY());
+		float size_height = GameScreen.FONTS_SIZE[0]*0.7f;
+		GameScreen.Fonts[0].setColor(Color.WHITE);
+		GameScreen.Fonts[0].drawMultiLine(batch, value+"", getX()+getOriginX(), getY()+getOriginY()+size_height/2, 0, HAlignment.CENTER);
+
 	}
 	
 	public void setPosition(Vector2 position) {

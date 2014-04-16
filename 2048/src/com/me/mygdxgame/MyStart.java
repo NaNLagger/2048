@@ -9,8 +9,8 @@ public class MyStart extends Game {
 	private MenuScreen menuScreen;
 	private GameScreen gameScreen;
 	
-	public static final float GAME_WIDTH = 1024;
-	public static final float GAME_HEIGHT = 578;
+	public static final float GAME_WIDTH = 578;
+	public static final float GAME_HEIGHT = 1024;
 	
 	public static MyStart instance;
 	
