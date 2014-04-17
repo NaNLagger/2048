@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.me.mygdxgame;
+package ru.nanolagger.game2048;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

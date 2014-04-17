@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.me.mygdxgame;
+package ru.nanolagger.game2048;
 
 public final class R {
     public static final class attr {
